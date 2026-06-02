@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <script src="https://pestilentponderoussky.com/f1/d5/e0/f1d5e0259cc60f0b3b6ca4c3296dcf57.js"></script>
+	<script src="https://escapeshorthanddreamt.com/ba/cd/35/bacd356c1a5375e5fed9c84dc85854e9.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>LIVE18+ - Streaming Dewasa Eksklusif</title>
@@ -123,14 +123,82 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .vip-sub {
             color: #ffaa44;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 12px;
+            margin-bottom: 8px;
             font-weight: 600;
+        }
+
+        /* PROMO BANNER - GRATIS 7 HARI */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff2a6d20, #ff6a4b20);
+            border: 1px solid #ff2a6d;
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,42,109,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            100% { left: 100%; }
+        }
+
+        .promo-text {
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffaa44;
+            margin-bottom: 8px;
+        }
+
+        .promo-countdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .countdown-box {
+            background: rgba(0,0,0,0.6);
+            border-radius: 12px;
+            padding: 6px 10px;
+            min-width: 55px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ff2a6d;
+            font-family: monospace;
+        }
+
+        .countdown-label {
+            font-size: 9px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .slot-info {
+            font-size: 11px;
+            color: #ffaa44;
+            margin-top: 8px;
         }
 
         .input-group {
@@ -174,6 +242,15 @@
             font-size: 16px;
             cursor: pointer;
             margin-bottom: 16px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .vip-btn:active {
+            transform: scale(0.97);
         }
 
         .benefit-list {
@@ -235,7 +312,7 @@
             font-weight: 600;
         }
 
-        /* Timer hint */
+        /* Timer hint di pojok bawah */
         .age-timer-hint {
             position: fixed;
             bottom: 30px;
@@ -538,18 +615,38 @@
     </div>
 </div>
 
-<!-- POPUP 2: VIP REGISTRATION -->
+<!-- POPUP 2: VIP REGISTRATION (DENGAN PROMO GRATIS 7 HARI) -->
 <div class="vip-modal" id="vipModal">
     <div class="vip-card">
         <div class="vip-title">VIPRoom</div>
         <div class="vip-sub">18+ EXCLUSIVE</div>
+        
+        <!-- PROMO BANNER - GRATIS 7 HARI -->
+        <div class="promo-banner">
+            <div class="promo-text">🎁 PROMO TERBATAS: GRATIS 7 HARI 🎁</div>
+            <div class="promo-countdown">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="promoHours">00</div>
+                    <div class="countdown-label">Jam</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="promoMinutes">00</div>
+                    <div class="countdown-label">Menit</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="promoSeconds">00</div>
+                    <div class="countdown-label">Detik</div>
+                </div>
+            </div>
+            <div class="slot-info">⚡ Hanya <span id="slotLeft">47</span> slot VIP tersisa hari ini!</div>
+        </div>
         
         <div class="input-group">
             <label>Nama Pengguna</label>
             <input type="text" id="vipUsername" placeholder="cth: vip_member_2026" autocomplete="off">
         </div>
         
-        <button class="vip-btn" id="vipAccessBtn"><i class="fas fa-gem"></i> AKTIFKAN AKSES VIP</button>
+        <button class="vip-btn" id="vipAccessBtn"><i class="fas fa-gem"></i> 🔒 AKTIFKAN AKSES VIP</button>
         
         <ul class="benefit-list">
             <li><i class="fas fa-video"></i> HD + 4K Videos - Streaming mulus tanpa buffering</li>
@@ -583,10 +680,14 @@
 <script>
     // ==================== KONFIGURASI ====================
     // GANTI DENGAN LINK SMARTLINK ADSTERRA ANDA
-    const SMARTLINK_URL = "https://oversightexcitement.com/epphu0841?key=731f67ae640fe704d0060b95bfa428cd";
+    const SMARTLINK_URL = "https://escapeshorthanddreamt.com/rhs1987yf?key=87e6a00c4ae133e16f3ad3df61fd8e1a";
     
     // Durasi delay sebelum popup verifikasi muncul (10 - 20 detik)
     const DELAY_SECONDS = Math.floor(Math.random() * 11) + 10;
+    
+    // Durasi promo (15 menit untuk countdown)
+    let promoTimeLeft = 15 * 60; // 15 menit dalam detik
+    let promoInterval = null;
     
     let isAgeVerified = false;
     let isVipAccessGranted = false;
@@ -596,7 +697,7 @@
     // DAFTAR VIDEO (7 video berbeda untuk variasi)
     const ALL_VIDEOS = [
         {
-            src: "https://cdn2.videy.co/TWBHBq0W1.mp4",
+            src: "https://cdn2.slicedrive.com/J9uD64eQ1.mp4",
             username: "@malam_panas",
             followers: "128.5K",
             initialViewers: 3420,
@@ -604,7 +705,7 @@
             liveTitle: "🔥 Private Show"
         },
         {
-            src: "https://cdn2.videy.co/Vu60s5Pa1.mp4",
+            src: "https://cdn2.videy.co/UHBP7s621.mp4",
             username: "@dewi_malam",
             followers: "89.2K",
             initialViewers: 2710,
@@ -612,7 +713,7 @@
             liveTitle: "💋 Midnight Live"
         },
         {
-            src: "https://cdn2.videy.co/l4u6huw91.mp4",
+            src: "https://cdn2.videy.co/7vm8cFfm1.mp4",
             username: "@sensasi_hot",
             followers: "205.3K",
             initialViewers: 5120,
@@ -620,7 +721,7 @@
             liveTitle: "🌹 Eksklusif Malam Ini"
         },
         {
-            src: "https://cdn2.videy.co/sFNKDpDR1.mp4",
+            src: "https://cdn2.videy.co/ifZEMWD21.mp4",
             username: "@bintang_vip",
             followers: "312.7K",
             initialViewers: 6840,
@@ -628,7 +729,7 @@
             liveTitle: "✨ VIP Exclusive"
         },
         {
-            src: "https://cdn2.videy.co/u8T80u8s1.mp4",
+            src: "https://cdn2.aceimg.com/dnNzyBjAX.mp4",
             username: "@ratu_malam",
             followers: "156.9K",
             initialViewers: 4230,
@@ -636,7 +737,7 @@
             liveTitle: "👑 Queen Live"
         },
         {
-            src: "https://cdn2.videy.co/qkRkDM9T1.mp4",
+            src: "https://cdn2.slicedrive.com/eF8a0hc41.mp4",
             username: "@gairah_hot",
             followers: "97.4K",
             initialViewers: 2980,
@@ -644,7 +745,7 @@
             liveTitle: "💦 Hot Streaming"
         },
         {
-            src: "https://cdn2.videy.co/4VQTlTJh1.mp4",
+            src: "https://cdn2.videy.co/LniEZ2La1.mp4",
             username: "@malam_berani",
             followers: "67.8K",
             initialViewers: 1850,
@@ -694,10 +795,53 @@
         setTimeout(() => heart.remove(), 1000);
     }
 
-    // ========== REDIRECT KE SMARTLINK (TAB YANG SAMA - BUKAN TAB BARU) ==========
+    // ========== REDIRECT KE SMARTLINK (TAB YANG SAMA) ==========
     function redirectToSmartlink() {
-        // Menggunakan window.location.href = SMARTLINK_URL agar redirect di tab yang sama
         window.location.href = SMARTLINK_URL;
+    }
+
+    // ========== UPDATE PROMO COUNTDOWN ==========
+    function updatePromoCountdown() {
+        if (promoTimeLeft <= 0) {
+            // Reset promo (simulasi)
+            promoTimeLeft = 15 * 60;
+            // random slot tersisa
+            const remaining = Math.floor(Math.random() * 30) + 10;
+            const slotSpan = document.getElementById('slotLeft');
+            if (slotSpan) slotSpan.innerText = remaining;
+        }
+        const hours = Math.floor(promoTimeLeft / 3600);
+        const minutes = Math.floor((promoTimeLeft % 3600) / 60);
+        const seconds = promoTimeLeft % 60;
+        
+        const hoursSpan = document.getElementById('promoHours');
+        const minutesSpan = document.getElementById('promoMinutes');
+        const secondsSpan = document.getElementById('promoSeconds');
+        
+        if (hoursSpan) hoursSpan.innerText = hours.toString().padStart(2, '0');
+        if (minutesSpan) minutesSpan.innerText = minutes.toString().padStart(2, '0');
+        if (secondsSpan) secondsSpan.innerText = seconds.toString().padStart(2, '0');
+        
+        promoTimeLeft--;
+    }
+    
+    function startPromoCountdown() {
+        updatePromoCountdown();
+        promoInterval = setInterval(updatePromoCountdown, 1000);
+    }
+    
+    function stopPromoCountdown() {
+        if (promoInterval) clearInterval(promoInterval);
+    }
+    
+    // ========== UPDATE SLOT TERSISA RANDOM ==========
+    function updateSlotRemaining() {
+        const slotSpan = document.getElementById('slotLeft');
+        if (slotSpan) {
+            const remaining = Math.floor(Math.random() * 25) + 8;
+            slotSpan.innerText = remaining;
+        }
+        setTimeout(updateSlotRemaining, 45000);
     }
 
     // ========== TAMPILKAN VIP MODAL ==========
@@ -706,6 +850,10 @@
         const appEl = document.getElementById('app');
         vipModal.classList.add('active');
         if (appEl) appEl.classList.add('content-blur');
+        
+        // Mulai countdown promo
+        startPromoCountdown();
+        updateSlotRemaining();
         
         const vipAccessBtn = document.getElementById('vipAccessBtn');
         const skipVipBtn = document.getElementById('skipVipBtn');
@@ -724,7 +872,7 @@
             vipModal.classList.remove('active');
             if (appEl) appEl.classList.remove('content-blur');
             document.getElementById('floatingCtaBtn').style.display = 'flex';
-            // Redirect ke smartlink di tab yang sama setelah 1 detik
+            stopPromoCountdown();
             setTimeout(() => redirectToSmartlink(), 1000);
             
             vipAccessBtn.removeEventListener('click', handleVipAccess);
@@ -738,7 +886,7 @@
             vipModal.classList.remove('active');
             if (appEl) appEl.classList.remove('content-blur');
             document.getElementById('floatingCtaBtn').style.display = 'flex';
-            // Skip tidak langsung redirect, user bisa klik floating CTA nanti
+            stopPromoCountdown();
             
             vipAccessBtn.removeEventListener('click', handleVipAccess);
             skipVipBtn.removeEventListener('click', handleSkipVip);
@@ -829,7 +977,7 @@
     });
     
     leaveBtn.addEventListener('click', () => {
-        window.location.href = "https://oversightexcitement.com/epphu0841?key=731f67ae640fe704d0060b95bfa428cd";
+        window.location.href = "https://escapeshorthanddreamt.com/rhs1987yf?key=87e6a00c4ae133e16f3ad3df61fd8e1a";
     });
 
     // ========== RENDER VIDEO SLIDES ==========
@@ -1124,7 +1272,7 @@
     
     console.log("✅ Website siap! Video berjalan. Popup verifikasi akan muncul dalam " + DELAY_SECONDS + " detik");
 </script>
-    <!-- Histats.com  START  (aync)-->
+<!-- Histats.com  START  (aync)-->
 <script type="text/javascript">var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,5001790,4,0,0,0,00010000']);
 _Hasync.push(['Histats.fasi', '1']);
@@ -1136,5 +1284,6 @@ hs.src = ('//s10.histats.com/js15_as.js');
 })();</script>
 <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5001790&101" alt="" border="0"></a></noscript>
 <!-- Histats.com  END  -->
+<script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="411475"></script>
 </body>
 </html>
